@@ -17,6 +17,6 @@ interface ClientInterface
 
     public function itemsList($options);
 
-    public function avatarList($options);
+    public function avatarList($options = []);
 
 }

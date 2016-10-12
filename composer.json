@@ -3,7 +3,7 @@
   "description": "Sharecloth API Demonstration",
   "autoload": {
     "psr-4": {
-      "Sharecloth\\Api\\": "src"
+      "ShareCloth\\Api\\": "src"
     }
   },
   "require": {

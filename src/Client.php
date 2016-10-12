@@ -3,8 +3,10 @@
 namespace ShareCloth\Api;
 
 
-use BadResponseException;
 use GuzzleHttp\Psr7\Response;
+use ShareCloth\Api\Exception\BadResponseException;
+use ShareCloth\Api\Response\ApiResponse;
+use ShareCloth\Api\Response\JsonResponseFactory;
 
 class Client implements ClientInterface
 {
@@ -18,7 +20,7 @@ class Client implements ClientInterface
     /** @var  string */
     protected $client;
 
-    /** @var string  */
+    /** @var string */
     protected $baseUri = 'http://api.sharecloth.com/v1/';
 
     /**
@@ -37,64 +39,92 @@ class Client implements ClientInterface
             'password' => $password
         ]);
 
-        if ($response->getStatusCode() == 200) {
-            $data = $this->parseResponse($response);
 
-            $this->apiSecret = $data['data']['api_secret'];
-            $this->client = $data['data']['id'];
-
+        if ($response->isResponseSuccess()) {
+            $this->apiSecret = $response->getDataItem('api_secret');
+            $this->client = $response->getDataItem('id');
         } else {
-            throw new BadResponseException();
+            throw  new BadResponseException($response->getDataItem('message'));
         }
     }
+
 
     public function getApiSecret()
     {
         return $this->apiSecret;
     }
 
+    /**
+     * @param $options
+     * @return ApiResponse
+     * @throws BadResponseException
+     */
     public function itemsList($options)
     {
         $response = $this->makeRequest('items/list', $options);
-        $data = $this->parseResponse($response);
-
-        return $data;
+        return $response->getData();
     }
 
-    public function avatarList($options)
+    /**
+     * @param $options
+     * @return ApiResponse
+     * @throws BadResponseException
+     */
+    public function avatarList($options = [])
     {
         $response = $this->makeRequest('avatar/list', $options);
-        $data = $this->parseResponse($response);
-
-        return $data;
+        return $response->getData();
     }
 
+    /**
+     * @param $uri
+     * @param $options
+     * @param string $method
+     * @return ApiResponse
+     * @throws BadResponseException
+     */
     protected function makeRequest($uri, $options, $method = 'POST')
     {
         if ($this->client && $this->apiSecret) {
             $options = array_merge($options, $this->generateAuthData());
         }
-        return $this->httpClient->request($method, $uri, $options);
+
+        $response = $this->httpClient->request($method, $uri, ['form_params' => $options]);
+        if ($response->getStatusCode() == 200) {
+            return $this->parseResponse($response);
+        }
+
+        throw new BadResponseException($response->getStatusCode());
     }
 
+    /**
+     * @param $httpClientConfig
+     */
     protected function initHttpClient($httpClientConfig)
     {
-        $config = array_merge($httpClientConfig, [
+        $config = array_merge([
             'base_uri' => $this->baseUri
-        ]);
+        ], $httpClientConfig);
 
         $this->httpClient = new \GuzzleHttp\Client($config);
     }
 
     protected function parseResponse(Response $response)
     {
-        $data = $response->getBody();
-        return json_encode($data);
+        $data = $response->getBody()->getContents();
+        $factory = new JsonResponseFactory();
+        return $factory->getApiResponse($data);
     }
 
     protected function generateAuthData()
     {
+        $time = time();
 
+        return [
+            'client' => $this->client,
+            'time' => $time,
+            'sign' => md5($this->client . $this->apiSecret . $time )
+        ];
     }
 
 

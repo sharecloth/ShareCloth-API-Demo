@@ -1,5 +1,7 @@
 <?php
 
+namespace ShareCloth\Api\Exception;
+
 /**
  * Class BadResponseException
  */
