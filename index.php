@@ -41,86 +41,44 @@
                     <div class="form-group">
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
                     </div>
-                    <button type="submit" class="btn btn-primary">Get Token</button>
+                    <button type="submit" class="btn btn-primary" id="get-token-button">Get Token</button>
                 </form>
 
-                <div class="login-error">
+                <div class="login-error hidden">
                     <div class="alert alert-danger">
                         Login or password not valid
                     </div>
                 </div>
 
-                <div class="login-result">
+                <div class="login-result hidden">
                     <p>API Token:</p>
                     <p><strong>12-043812askldfjkl23j4504958</strong></p>
                 </div>
             </div>
         </div>
+        <hr />
     </div>
-    <hr />
 
 
 
-    <div class="row marketing">
+
+    <div class="row marketing hidden" id="lists">
         <div class="col-lg-6 ta-center">
             <h4>Avatars</h4>
-            <p><a href="#" class="btn btn-primary">Get avatar list</a></p>
-            <table class="table">
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Default Avatar 23</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Default Avatar 23</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Default Avatar 23</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Default Avatar 23</td>
-                </tr>
-            </table>
+            <p><a href="#" class="btn btn-primary" id="get-avatar-list">Get avatar list</a></p>
+            <div class="avatar-table-wrapper"></div>
         </div>
 
-        <div class="col-lg-6">
-            <div class="ta-center">
+        <div class="col-lg-6 ta-center">
             <h4>Cloth</h4>
-            <p><a href="#" class="btn btn-primary">Get cloth list</a></p>
-            </div>
-            <table class="table">
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Default Avatar 23</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Default Avatar 23</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Default Avatar 23</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Default Avatar 23</td>
-                </tr>
-            </table>
+            <p><a href="#" class="btn btn-primary" id="get-cloth-list">Get cloth list</a></p>
+            <div class="cloth-table-wrapper"></div>
         </div>
+        <hr />
     </div>
 
-    <hr />
-    <div class="row ta-center">
+
+    <div class="row ta-center hidden">
         <h4>Iframe result</h4>
         <div class="sharecloth-embed-wrapper"><iframe width="400" height="700" src="http://dev.sharecloth.com/ru/embed/085b5e13d876c87bc6604f92322cba79/1514" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe></div>
     </div>
@@ -138,5 +96,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

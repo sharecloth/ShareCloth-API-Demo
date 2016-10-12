@@ -29,7 +29,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $this->assertInternalType('array', $avatars);
 
         $this->assertArrayHasKey('avatar_id', $avatars[0]);
-        $this->assertArrayHasKey('name', $avatars[0]);
+        $this->assertArrayHasKey('description', $avatars[0]);
     }
 
 
