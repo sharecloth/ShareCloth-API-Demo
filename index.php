@@ -78,9 +78,12 @@
     </div>
 
 
-    <div class="row ta-center hidden">
+    <div class="row ta-center hidden" id="avatar-preview">
         <h4>Iframe result</h4>
-        <div class="sharecloth-embed-wrapper"><iframe width="400" height="700" src="http://dev.sharecloth.com/ru/embed/085b5e13d876c87bc6604f92322cba79/1514" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe></div>
+        <p>Selected Avatar Id: <strong id="selectedAvatarId"></strong></p>
+        <p>Selected Cloth Id: <strong id="selectedClothId"></strong></p>
+        <p><input type="button" id="show-embed-button" value="Show Embed" class="btn btn-success btn-lg hidden" /></p>
+        <div class="sharecloth-embed-wrapper"></div>
     </div>
 
 

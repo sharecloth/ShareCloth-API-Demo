@@ -16,6 +16,7 @@ if (!empty($email) && !empty($password)) {
         $client = new \ShareCloth\Api\Client($email, $password);
     } catch (\ShareCloth\Api\Exception\BadResponseException $e) {
         echo json_encode(['result' => false, 'message' => $e->getMessage()]);
+        exit;
     }
 }
 
@@ -29,7 +30,7 @@ if ($method == 'login') {
     $html = '<table class="table">';
     $html .= '<tr><th>ID</th><th>Name</th></tr>';
     foreach ($data as $value) {
-        $html .= '<tr data-avatar-id="'.$value['avatar_id'].'">';
+        $html .= '<tr data-id="'.$value['avatar_id'].'" class="selectable" data-type="avatar">';
         $html .= '<td>'.$value['avatar_id'].'</td>';
         $html .= '<td>'.$value['description'].'</td>';
         $html .= '</tr>';
@@ -41,7 +42,7 @@ if ($method == 'login') {
     $html = '<table class="table">';
     $html .= '<tr><th>ID</th><th>Name</th></tr>';
     foreach ($data as $value) {
-        $html .= '<tr data-ident="'.$value['ident'].'">';
+        $html .= '<tr data-id="'.$value['ident'].'" class="selectable" data-type="cloth">';
         $html .= '<td>'.$value['ident'].'</td>';
         $html .= '<td>'.$value['name'].'</td>';
         $html .= '</tr>';
