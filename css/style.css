@@ -85,3 +85,12 @@ body {
 .ta-center {
     text-align: center;
 }
+
+.sharecloth-embed-wrapper {
+    width: 420px;
+    height: 720px;
+    border: 1px #eee solid;
+    margin: 10px auto 100px;
+    padding: 10px;
+}
+

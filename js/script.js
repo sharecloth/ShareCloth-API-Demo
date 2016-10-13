@@ -102,6 +102,10 @@ $(function() {
 
     $lists.on('click', 'tr.selectable', function() {
         var $el = $(this);
+
+        $el.closest('table').find('.selectable').removeClass('info');
+        $el.addClass('info');
+
         var type = $el.data('type');
         if (type == 'avatar') {
             $selectedAvatarId.text($el.data('id'));

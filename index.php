@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>ShareCloth Api Demo</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -30,16 +30,18 @@
         <h3 class="text-muted">ShareCloth Api Demo</h3>
     </div>
 
-    <div class="login-form ta-center">
+    <section class="login-form ta-center">
         <div class="row ">
             <div class="col-md-5 col-md-offset-3">
                 <h4>Login Form</h4>
                 <form class="mb20">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email">
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email"
+                               name="email">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                               name="password">
                     </div>
                     <button type="submit" class="btn btn-primary" id="get-token-button">Get Token</button>
                 </form>
@@ -56,35 +58,38 @@
                 </div>
             </div>
         </div>
-        <hr />
-    </div>
+        <hr/>
+    </section>
 
 
+    <section id="lists" class="hidden">
+        <div class="row marketing">
+            <div class="col-lg-6 ta-center">
+                <h4>Avatars</h4>
+                <p><a href="#" class="btn btn-primary" id="get-avatar-list">Get avatar list</a></p>
+                <div class="avatar-table-wrapper"></div>
+            </div>
 
-
-    <div class="row marketing hidden" id="lists">
-        <div class="col-lg-6 ta-center">
-            <h4>Avatars</h4>
-            <p><a href="#" class="btn btn-primary" id="get-avatar-list">Get avatar list</a></p>
-            <div class="avatar-table-wrapper"></div>
+            <div class="col-lg-6 ta-center">
+                <h4>Cloth</h4>
+                <p><a href="#" class="btn btn-primary" id="get-cloth-list">Get cloth list</a></p>
+                <div class="cloth-table-wrapper"></div>
+            </div>
         </div>
+        <hr/>
+    </section>
 
-        <div class="col-lg-6 ta-center">
-            <h4>Cloth</h4>
-            <p><a href="#" class="btn btn-primary" id="get-cloth-list">Get cloth list</a></p>
-            <div class="cloth-table-wrapper"></div>
+
+    <section id="avatar-preview" class="hidden">
+        <div class="row ta-center">
+            <h4>Iframe result</h4>
+            <p>Selected Avatar Id: <strong id="selectedAvatarId"></strong></p>
+            <p>Selected Cloth Id: <strong id="selectedClothId"></strong></p>
+            <p><input type="button" id="show-embed-button" value="Show Embed" class="btn btn-success btn-lg hidden"/>
+            </p>
+            <div class="sharecloth-embed-wrapper"></div>
         </div>
-        <hr />
-    </div>
-
-
-    <div class="row ta-center hidden" id="avatar-preview">
-        <h4>Iframe result</h4>
-        <p>Selected Avatar Id: <strong id="selectedAvatarId"></strong></p>
-        <p>Selected Cloth Id: <strong id="selectedClothId"></strong></p>
-        <p><input type="button" id="show-embed-button" value="Show Embed" class="btn btn-success btn-lg hidden" /></p>
-        <div class="sharecloth-embed-wrapper"></div>
-    </div>
+    </section>
 
 
     <footer class="footer">
@@ -92,7 +97,6 @@
     </footer>
 
 </div> <!-- /container -->
-
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
