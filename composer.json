@@ -1,14 +1,14 @@
 {
   "name": "sharecloth/api-demo",
   "description": "Sharecloth API Demonstration",
-  "autoload": {
-    "psr-4": {
-      "ShareCloth\\Api\\": "src"
+
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/sharecloth/ShareCloth-API.git"
     }
-  },
+  ],
   "require": {
-    "php": ">=5.4.0",
-    "guzzlehttp/guzzle": "^6.2",
-    "phpunit/phpunit": "5.5.*"
+    "sharecloth/api": "dev-master"
   }
 }
